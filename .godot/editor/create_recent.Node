@@ -1,5 +1,12 @@
-AudioStreamPlayer
+Sprite2D
+Node2D
 Timer
+AnimationPlayer
+GPUParticles2D
+ColorRect
+Label
+PanelContainer
+CanvasLayer
+AudioStreamPlayer
 TextureRect
 Area2D
-Label
