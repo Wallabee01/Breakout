@@ -1,0 +1,16 @@
+res://src/scenes/game/game.tscn
+res://src/scenes/entity/paddle/paddle.tscn
+res://src/scenes/entity/ball/ball.tscn
+res://src/scenes/game/game.gd
+res://src/scenes/managers/sfx_player_manager.gd
+res://src/scenes/managers/sfx_player_manager.tscn
+res://src/scenes/entity/brick/brick.gd
+res://src/scenes/managers/sfx_player_component.tscn
+res://src/scenes/components/sfx_player_component.tscn
+res://src/scenes/components/sfx_player_component.gd
+res://src/scenes/entity/paddle/paddle.gd
+res://src/autoloads/music_player.gd
+res://src/scenes/entity/brick/brick.tscn
+res://src/scenes/managers/brick_manager.gd
+res://resources/ui/theme.tres
+res://src/scenes/entity/ball/ball.gd

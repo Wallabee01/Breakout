@@ -1,0 +1,8 @@
+res://resources/ui/theme.tres::64e2701797efec38409892158c0812f7::1752729359::res://.godot/exported/133200997/export-4e940b34ca9cf79a22acaccb3ff4d421-theme.res
+res://src/scenes/components/sfx_player_component.tscn::43b42760c389e480a35cc5faaf608f2f::1752733044::res://.godot/exported/133200997/export-cc5173a186e74d339986e8b82d969ff4-sfx_player_component.scn
+res://src/scenes/components/velocity_component.tscn::20bfbf7ce9d0e0e6d17072c0d7d5d2f7::1752704243::res://.godot/exported/133200997/export-a194742c5da35f5d6aa903a3d65b061c-velocity_component.scn
+res://src/scenes/entity/ball/ball.tscn::d13e8887550975d4162b3cb7f556358f::1752733044::res://.godot/exported/133200997/export-523d4667a3693a80ef197cfa4cf0b9c7-ball.scn
+res://src/scenes/entity/brick/brick.tscn::ef7a8b1200b659d1d3f36b1c8a105124::1752733044::res://.godot/exported/133200997/export-46d3468f0d70e69a531a4b33466eb9f7-brick.scn
+res://src/scenes/entity/paddle/paddle.tscn::c901c0f5e3aada6c407ba70d3ee07cbe::1752733044::res://.godot/exported/133200997/export-eb87fd24ec1a5337ee9f3bae8ca618cd-paddle.scn
+res://src/scenes/game/game.tscn::9c17078e04b6215b870964cfd456e984::1752733044::res://.godot/exported/133200997/export-35a761aa3731da4fac6e1dd652072cf4-game.scn
+res://src/scenes/managers/brick_manager.tscn::42bf3c9b0c932cf756090f66c1585450::1752700115::res://.godot/exported/133200997/export-058bb1b7cf4f78501c26281ad64ae0b4-brick_manager.scn
