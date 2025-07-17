@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dm2vbywbog5u7"]
+
+[ext_resource type="FontFile" uid="uid://djrdw8xh6mjuu" path="res://assets/fonts/senor-saturno/saturno.ttf" id="1_qfwp4"]
+
+[resource]
+Label/fonts/font = ExtResource("1_qfwp4")
