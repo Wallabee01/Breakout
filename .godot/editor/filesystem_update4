@@ -1,6 +1,14 @@
 res://src/scenes/game/game.tscn
-res://src/scenes/managers/brick_manager.gd
 res://src/scenes/ui/pause_menu.tscn
 res://src/scenes/entity/brick/brick.tscn
 res://src/scenes/entity/ball/ball.tscn
 res://src/scenes/entity/paddle/paddle.tscn
+res://src/scenes/managers/brick_manager.gd
+res://src/scenes/entity/brick/brick.gd
+res://src/scenes/entity/ball/ball.gd
+res://src/autoloads/game_events.gd
+res://src/scenes/game/game.gd
+res://src/autoloads/power_ups.gd
+res://src/scenes/entity/paddle/paddle.gd
+res://resources/particles/gradients/normal_ball_gradient.tres
+res://resources/particles/gradients/fire_ball_gradient.tres

@@ -1,4 +1,5 @@
 res://resources/particles/gradients
+res://src/autoloads
 res://src/scenes/ui
 C:/Users/shens/Documents/Godot/breakout/release
 res://assets/icon
@@ -6,4 +7,3 @@ res://assets/game_objects
 res://assets
 res://resources/ui
 res://src/scenes/managers
-res://src/autoloads

@@ -1,6 +1,6 @@
-Sprite2D
 Node2D
 Timer
+Sprite2D
 AnimationPlayer
 GPUParticles2D
 ColorRect
