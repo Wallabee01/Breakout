@@ -1,7 +1,0 @@
-res://src/scenes/game/game.tscn
-res://src/scenes/ui/pause_menu.tscn
-res://src/scenes/entity/brick/brick.tscn
-res://src/scenes/entity/ball/ball.tscn
-res://src/scenes/entity/paddle/paddle.tscn
-res://src/scenes/entity/shield/shield.tscn
-res://src/scenes/game/game.gd
