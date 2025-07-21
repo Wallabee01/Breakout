@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://067ygeytqo5w"]
+
+[ext_resource type="Texture2D" uid="uid://dtcukwvn6q0r2" path="res://assets/game_objects/paddle/Paddle.png" id="1_cmswv"]
+[ext_resource type="Script" uid="uid://dqx6kqhdcyolw" path="res://src/scenes/entity/shield/shield.gd" id="1_x2ovm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2ovm"]
+size = Vector2(640, 8)
+
+[node name="Shield" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_x2ovm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_x2ovm")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 1, 1, 1)
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(13.3333, 1)
+texture = ExtResource("1_cmswv")
+region_rect = Rect2(0, 0, 48, 8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

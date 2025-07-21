@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://mkcl23hv25wt"]
+
+[ext_resource type="Texture2D" uid="uid://dtcukwvn6q0r2" path="res://assets/game_objects/paddle/Paddle.png" id="1_8bf41"]
+[ext_resource type="Script" uid="uid://dsjokp5lcsriy" path="res://src/scenes/entity/paddle/paddle.gd" id="1_08tcq"]
+[ext_resource type="PackedScene" uid="uid://c0nq4dsehbb2l" path="res://src/scenes/components/velocity_component.tscn" id="2_11l17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3toy"]
+size = Vector2(48, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcieq"]
+size = Vector2(48, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_es0f2"]
+size = Vector2(48, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11l17"]
+size = Vector2(48, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hhm7"]
+size = Vector2(48, 6)
+
+[node name="Paddle" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_08tcq")
+
+[node name="SizeTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
+
+[node name="MagnetTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
+
+[node name="SplitTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_11l17")]
+max_speed = 325
+acceleration = 20.0
+
+[node name="PaddleCollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_r3toy")
+
+[node name="SplitPaddle" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+
+[node name="SplitSprite2D" type="Sprite2D" parent="SplitPaddle"]
+unique_name_in_owner = true
+modulate = Color(0, 1, 1, 1)
+texture = ExtResource("1_8bf41")
+
+[node name="SplitArea2D" type="Area2D" parent="SplitPaddle"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="SplitAreaCollisionShape2D" type="CollisionShape2D" parent="SplitPaddle/SplitArea2D"]
+unique_name_in_owner = true
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_tcieq")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SplitPaddle"]
+unique_name_in_owner = true
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_es0f2")
+disabled = true
+
+[node name="NormalPaddle" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+
+[node name="NormalSprite2D" type="Sprite2D" parent="NormalPaddle"]
+unique_name_in_owner = true
+modulate = Color(0, 1, 1, 1)
+texture = ExtResource("1_8bf41")
+
+[node name="NormalArea2D" type="Area2D" parent="NormalPaddle"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AreaCollisionShape2D" type="CollisionShape2D" parent="NormalPaddle/NormalArea2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_11l17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NormalPaddle"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_0hhm7")
+
+[connection signal="body_entered" from="SplitPaddle/SplitArea2D" to="." method="_on_split_area_2d_body_entered"]
+[connection signal="body_entered" from="NormalPaddle/NormalArea2D" to="." method="_on_normal_area_2d_body_entered"]

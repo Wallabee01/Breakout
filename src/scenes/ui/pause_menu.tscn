@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnwtfqjtvds0j"]
+
+[ext_resource type="Script" uid="uid://di0d1e0h014g1" path="res://src/scenes/ui/pause_menu.gd" id="1_x5dnn"]
+[ext_resource type="Theme" uid="uid://dm2vbywbog5u7" path="res://resources/ui/theme.tres" id="2_3lwag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5dnn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_x5dnn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.341176)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x5dnn")
+
+[node name="PauseLabel" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_3lwag")
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1

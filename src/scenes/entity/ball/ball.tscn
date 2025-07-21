@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://djon8qhfnxrvj"]
+
+[ext_resource type="Script" uid="uid://di2wweyixpa8w" path="res://src/scenes/entity/ball/ball.gd" id="1_1x4tk"]
+[ext_resource type="Texture2D" uid="uid://c8kwp3n7t11g4" path="res://assets/particles/Particle_Circle.png" id="2_ggnj1"]
+[ext_resource type="AudioStream" uid="uid://c607sviejy86r" path="res://assets/audio/sfx/pickaxe_hit_02.wav" id="2_kei8m"]
+[ext_resource type="Texture2D" uid="uid://b3sa05bw1nc11" path="res://assets/game_objects/ball/MetalBall8x8.png" id="4_kei8m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1x4tk"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="Gradient" id="Gradient_ggnj1"]
+offsets = PackedFloat32Array(0.3, 1)
+colors = PackedColorArray(0.164706, 0.156863, 0.2, 1, 0.854902, 0.898039, 0.901961, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kei8m"]
+gradient = SubResource("Gradient_ggnj1")
+
+[sub_resource type="Curve" id="Curve_7xnus"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.134832), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gloqk"]
+curve = SubResource("Curve_7xnus")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_amoux"]
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.13
+scale_max = 0.13
+scale_curve = SubResource("CurveTexture_gloqk")
+color_ramp = SubResource("GradientTexture1D_kei8m")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1x4tk"]
+radius = 4.0
+
+[node name="Ball" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 5
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_1x4tk")
+gravity_scale = 0.0
+can_sleep = false
+max_contacts_reported = 1
+script = ExtResource("1_1x4tk")
+
+[node name="BounceStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_kei8m")
+
+[node name="BigBallTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
+
+[node name="FireBallTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
+
+[node name="MultiBallTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 100
+texture = ExtResource("2_ggnj1")
+lifetime = 0.3
+fixed_fps = 0
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_amoux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_1x4tk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("4_kei8m")

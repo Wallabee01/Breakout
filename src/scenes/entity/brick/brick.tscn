@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dv8aejxmq7lsd"]
+
+[ext_resource type="Script" uid="uid://cusid2ft0huuw" path="res://src/scenes/entity/brick/brick.gd" id="1_hlas7"]
+[ext_resource type="Texture2D" uid="uid://byrfdrnhk0d17" path="res://assets/game_objects/brick/MetalBrickInverted.png" id="2_hlas7"]
+
+[sub_resource type="Animation" id="Animation_rxlwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hlas7"]
+resource_name = "pulse"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.501961), Color(1, 1, 1, 1), Color(1, 1, 1, 0.501961), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hjgg"]
+_data = {
+&"RESET": SubResource("Animation_rxlwb"),
+&"pulse": SubResource("Animation_hlas7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlas7"]
+size = Vector2(36, 8)
+
+[node name="Brick" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_hlas7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2hjgg")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hlas7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hlas7")
+
+[node name="PowerupSprite2D" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

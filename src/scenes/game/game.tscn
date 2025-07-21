@@ -1,0 +1,165 @@
+[gd_scene load_steps=14 format=3 uid="uid://yglv2mpico2p"]
+
+[ext_resource type="PackedScene" uid="uid://edacatfd465g" path="res://src/scenes/managers/brick_manager.tscn" id="1_75q6j"]
+[ext_resource type="Script" uid="uid://bfke1lpixuxpl" path="res://src/scenes/game/game.gd" id="1_i43ty"]
+[ext_resource type="PackedScene" uid="uid://djon8qhfnxrvj" path="res://src/scenes/entity/ball/ball.tscn" id="1_jy47b"]
+[ext_resource type="AudioStream" uid="uid://dmumarndllvl3" path="res://assets/audio/sfx/475347__fupicat__videogame-death-sound.wav" id="2_5fwnx"]
+[ext_resource type="PackedScene" uid="uid://mkcl23hv25wt" path="res://src/scenes/entity/paddle/paddle.tscn" id="2_yw0pm"]
+[ext_resource type="AudioStream" uid="uid://ceo4mhfor2gdy" path="res://assets/audio/sfx/448226__inspectorj__explosion-8-bit-01.wav" id="3_3fbob"]
+[ext_resource type="Texture2D" uid="uid://f8g76je1vp8s" path="res://assets/hubbledeepfield.jpg" id="3_viayp"]
+[ext_resource type="Theme" uid="uid://dm2vbywbog5u7" path="res://resources/ui/theme.tres" id="4_3fbob"]
+[ext_resource type="PackedScene" uid="uid://cnwtfqjtvds0j" path="res://src/scenes/ui/pause_menu.tscn" id="4_14lda"]
+[ext_resource type="PackedScene" uid="uid://067ygeytqo5w" path="res://src/scenes/entity/shield/shield.tscn" id="9_p0lgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r25r1"]
+size = Vector2(24, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jy47b"]
+size = Vector2(640, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i43ty"]
+size = Vector2(640, 24)
+
+[node name="Game" type="Node" groups=["game"]]
+script = ExtResource("1_i43ty")
+
+[node name="GameoverStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_5fwnx")
+
+[node name="DeathStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_3fbob")
+volume_db = -5.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_14lda")]
+visible = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("4_3fbob")
+text = "Score: 0"
+
+[node name="LifeLabel" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("4_3fbob")
+text = "Lives: 3"
+horizontal_alignment = 2
+
+[node name="Control" type="Control" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="StartLabel" type="Label" parent="UI/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 212.0
+offset_top = -125.0
+offset_right = 420.0
+offset_bottom = -102.0
+theme = ExtResource("4_3fbob")
+text = "Press 'SPACE' to Start"
+
+[node name="GameOverLabel" type="Label" parent="UI/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 266.0
+offset_top = -190.0
+offset_right = 368.0
+offset_bottom = -141.0
+theme = ExtResource("4_3fbob")
+text = "GAME OVER
+Score: 99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighscoreLabel" type="Label" parent="UI/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 232.0
+offset_top = 3.0
+offset_right = 398.0
+offset_bottom = 19.0
+theme = ExtResource("4_3fbob")
+text = "High Score: 999"
+
+[node name="BrickManager" parent="." node_paths=PackedStringArray("brick_parent") instance=ExtResource("1_75q6j")]
+brick_parent = NodePath("../Bricks")
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="ArenaStaticBody2D" type="StaticBody2D" parent="Arena"]
+collision_mask = 0
+
+[node name="LeftWall" type="CollisionShape2D" parent="Arena/ArenaStaticBody2D"]
+position = Vector2(-12, 180)
+shape = SubResource("RectangleShape2D_r25r1")
+
+[node name="RightWall" type="CollisionShape2D" parent="Arena/ArenaStaticBody2D"]
+position = Vector2(652, 180)
+shape = SubResource("RectangleShape2D_r25r1")
+
+[node name="DeathArea2D" type="Area2D" parent="Arena"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="BottomWall" type="CollisionShape2D" parent="Arena/DeathArea2D"]
+position = Vector2(320, 372)
+shape = SubResource("RectangleShape2D_jy47b")
+
+[node name="CeilingArea2D" type="Area2D" parent="Arena"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="TopWall" type="CollisionShape2D" parent="Arena/CeilingArea2D"]
+position = Vector2(320, -12)
+shape = SubResource("RectangleShape2D_i43ty")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_viayp")
+
+[node name="Bricks" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Paddle" parent="." instance=ExtResource("2_yw0pm")]
+unique_name_in_owner = true
+position = Vector2(320, 320)
+
+[node name="Shield" parent="." instance=ExtResource("9_p0lgu")]
+unique_name_in_owner = true
+position = Vector2(320, 356)
+
+[node name="Ball" parent="." instance=ExtResource("1_jy47b")]
+unique_name_in_owner = true
+position = Vector2(320, 256)
+
+[node name="Balls" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="Arena/DeathArea2D" to="." method="_on_death_area_2d_body_entered"]
+[connection signal="body_entered" from="Arena/CeilingArea2D" to="." method="_on_ceiling_area_2d_body_entered"]
