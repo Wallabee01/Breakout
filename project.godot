@@ -15,7 +15,9 @@ run/main_scene="uid://yglv2mpico2p"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Breakout"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://b3sa05bw1nc11"
+boot_splash/use_filter=false
+boot_splash/image="uid://dec0w7b47mrjk"
+config/icon="uid://lerh6av5u88x"
 
 [autoload]
 
@@ -76,6 +78,7 @@ pause={
 2d_physics/layer_1="world"
 2d_physics/layer_2="ball"
 2d_physics/layer_3="paddle"
+2d_physics/layer_4="brick"
 
 [physics]
 

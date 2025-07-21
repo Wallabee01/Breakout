@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://djon8qhfnxrvj"]
+[gd_scene load_steps=13 format=3 uid="uid://djon8qhfnxrvj"]
 
 [ext_resource type="Script" uid="uid://di2wweyixpa8w" path="res://src/scenes/entity/ball/ball.gd" id="1_1x4tk"]
+[ext_resource type="AudioStream" uid="uid://dvv6x013qu3fc" path="res://assets/audio/sfx/238283__meroleroman7__8-bit-noise.wav" id="2_7xnus"]
 [ext_resource type="Texture2D" uid="uid://c8kwp3n7t11g4" path="res://assets/particles/Particle_Circle.png" id="2_ggnj1"]
 [ext_resource type="AudioStream" uid="uid://c607sviejy86r" path="res://assets/audio/sfx/pickaxe_hit_02.wav" id="2_kei8m"]
 [ext_resource type="Texture2D" uid="uid://b3sa05bw1nc11" path="res://assets/game_objects/ball/MetalBall8x8.png" id="4_kei8m"]
@@ -46,13 +47,17 @@ can_sleep = false
 max_contacts_reported = 1
 script = ExtResource("1_1x4tk")
 
+[node name="FireStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_7xnus")
+
 [node name="BounceStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_kei8m")
 
 [node name="BigBallTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 20.0
+wait_time = 30.0
 one_shot = true
 
 [node name="FireBallTimer" type="Timer" parent="."]
@@ -62,7 +67,7 @@ one_shot = true
 
 [node name="MultiBallTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 20.0
+wait_time = 30.0
 one_shot = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

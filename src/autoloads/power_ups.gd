@@ -3,10 +3,10 @@ extends Node
 signal powerup(powerup_type, ball)
 signal reset_powerups
 
-const POWERUP_CHANCE: float = 0.85
+const POWERUP_CHANCE: float = 0.33333
 const BALL_SCENE = preload("res://src/scenes/entity/ball/ball.tscn")
 
-enum PowerUp {PADDLE_SIZE, PADDLE_MAGNET, PADDLE_SPLIT, BIG_BALL, FIRE_BALL, MULTI_BALL, SHIELD}
+enum PowerUp {PADDLE_SIZE, PADDLE_MAGNET, PADDLE_SPLIT, BIG_BALL, FIRE_BALL, MULTI_BALL, SHIELD, BRICK_EXPLOSION}
 
 
 func _ready():
@@ -30,6 +30,8 @@ func set_brick_powerup(brick: Brick):
 				brick.set_powerup(PowerUp.MULTI_BALL)
 			6:
 				brick.set_powerup(PowerUp.SHIELD)
+			7:
+				brick.set_powerup(PowerUp.BRICK_EXPLOSION)
 
 
 func emit_powerup_signal(powerup_type, ball):

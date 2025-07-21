@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://di520dmti3a2k"]
+
+[ext_resource type="Script" uid="uid://d2qyqkcgu4yji" path="res://src/scenes/standalones/explosion.gd" id="1_fmcr7"]
+[ext_resource type="Texture2D" uid="uid://xo06xxp6hdc6" path="res://assets/particles/explosion_particle.png" id="2_g80o8"]
+[ext_resource type="AudioStream" uid="uid://cufia7kjq7vy2" path="res://assets/audio/sfx/462189__tolerabledruid6__8-bit-atari-boom.wav" id="2_v2fln"]
+
+[sub_resource type="Curve" id="Curve_v2fln"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.247967, 1), 0.0, 0.0, 0, 0, Vector2(0.695122, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_x5287"]
+curve = SubResource("Curve_v2fln")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iai5t"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_x5287")
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_fmcr7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_v2fln")
+autoplay = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("2_g80o8")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_iai5t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,3 +1,6 @@
+res://src/scenes/standalones
+res://assets
+res://assets/game_objects/ball
 C:/Users/shens/Documents/Godot/breakout/release
 res://src/autoloads
 res://src/scenes/entity/shield
@@ -5,6 +8,5 @@ res://resources/particles/gradients
 res://src/scenes/ui
 res://assets/icon
 res://assets/game_objects
-res://assets
 res://resources/ui
 res://src/scenes/managers

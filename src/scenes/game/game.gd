@@ -123,15 +123,13 @@ func _on_death_area_2d_body_entered(body):
 func _on_brick_destroyed():
 	_update_score(1)
 
-	if bricks.get_children().size() == 1:
-		_update_life(1)
+	if bricks.get_children().size() <= 1:
 		spawn_bricks()
 
 
 func _on_ceiling_area_2d_body_entered(body):
 	body.bounce("Ceiling")
 	if body == ball:
-		print("Hit Ceiling")
 		if !paddle.is_ceiling_hit:
 			paddle.is_ceiling_hit = true
 			if paddle.is_large:

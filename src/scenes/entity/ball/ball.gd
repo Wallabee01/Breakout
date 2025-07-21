@@ -30,6 +30,7 @@ var is_fire_ball: bool = false
 @onready var multi_ball_timer = %MultiBallTimer
 @onready var sprite_2d = %Sprite2D
 @onready var bounce_stream_player = %BounceStreamPlayer
+@onready var fire_stream_player = %FireStreamPlayer
 
 
 func _ready():
@@ -80,7 +81,7 @@ func reset_speed():
 
 func bounce(area_name: String):
 	if is_fire_ball && area_name == "Brick":
-		#TODO: Fire destroy brick sound
+		fire_stream_player.play()
 		return
 	
 	speed += SPEED_INCREASE
