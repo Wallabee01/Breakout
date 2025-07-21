@@ -1,5 +1,6 @@
-res://resources/particles/gradients
 res://src/autoloads
+res://src/scenes/entity/shield
+res://resources/particles/gradients
 res://src/scenes/ui
 C:/Users/shens/Documents/Godot/breakout/release
 res://assets/icon

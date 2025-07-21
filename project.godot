@@ -22,6 +22,7 @@ config/icon="uid://b3sa05bw1nc11"
 GameEvents="*res://src/autoloads/game_events.gd"
 MusicPlayer="*res://src/autoloads/music_player.gd"
 PowerUps="*res://src/autoloads/power_ups.gd"
+Globals="*res://src/autoloads/globals.gd"
 
 [debug]
 
