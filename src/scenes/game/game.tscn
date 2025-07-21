@@ -32,8 +32,9 @@ unique_name_in_owner = true
 stream = ExtResource("3_3fbob")
 volume_db = -5.0
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_14lda")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("start_label") instance=ExtResource("4_14lda")]
 visible = false
+start_label = NodePath("../UI/MarginContainer/Control/StartLabel")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

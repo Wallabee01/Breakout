@@ -11,3 +11,4 @@ res://src/scenes/standalones/explosion.tscn
 res://src/scenes/standalones/explosion.gd
 res://src/scenes/entity/ball/ball.gd
 res://src/scenes/game/game.gd
+res://src/scenes/ui/pause_menu.gd
